@@ -77,15 +77,21 @@ TEMPLATES = [
 WSGI_APPLICATION = 'backend.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'task_manager',
+        'NAME': config('MONGODB_NAME'),
+        'ENFORCE_SCHEMA': False,
+        'CLIENT': {
+            'host': config('MONGODB_HOST'),
+            'username': config('MONGODB_USER'),
+            'password': config('MONGODB_PASSWORD')
+        }  
     }
 }
+
+
+
 
 
 # Password validation

@@ -1,0 +1,146 @@
+<!-- task_manager_app/templates/task_manager_app/index.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Task Manager</title>
+        
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+        
+        <!-- FullCalendar CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.10/fullcalendar.min.css">
+        
+        <!-- Bootstrap JS -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+        
+        <!-- jQuery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        
+        <!-- Moment.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        
+        {% comment %} <!-- FullCalendar JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.10/index.min.js" integrity="sha512-xCMh+IX6X2jqIgak2DBvsP6DNPne/t52lMbAUJSjr3+trFn14zlaryZlBcXbHKw8SbrpS0n3zlqSVmZPITRDSQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> {% endcomment %}
+        
+        <!-- Bootswatch Cerulean Theme -->
+        <link rel="stylesheet" href="https://bootswatch.com/5/solar/bootstrap.min.css">
+        
+        <!-- MDB CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdb-ui-kit@5.2.2/dist/css/mdb.min.css">
+
+        <!-- Sweeet Alert -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+        <!-- Your custom styles -->
+        <link rel="stylesheet" type="text/css" href="{% static "css/styles.css" %}">
+    </head>
+    
+    
+<body>
+    {% block navbar %}
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
+        <!-- Container wrapper -->
+        <div class="container">
+            <!-- Navbar brand -->
+            <a class="navbar-brand me-2" href="">
+                <img
+                src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
+                height="16"
+                alt="MDB Logo"
+                loading="lazy"
+                style="margin-top: -1px;"
+                />
+            </a>
+
+            <!-- Toggle button -->
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarButtonsExample"
+                aria-controls="navbarButtonsExample"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarButtonsExample">
+                <!-- Left links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="#"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"></a>
+                </li>
+                </ul>
+                <!-- Left links -->
+
+                
+
+
+                
+
+                <div class="d-flex align-items-center">
+
+                {% if user.is_authenticated %}
+                
+                <a data-mdb-ripple-init type="button" class="btn btn-danger px-3 me-2" href="{% url 'logout' %}">logout
+                </a>
+
+                    {% else %}
+                <a data-mdb-ripple-init type="button" class="btn btn-success px-3 me-2" href="{% url "login" %}">
+                    Login
+                </a>
+                <a data-mdb-ripple-init type="button" class="btn btn-primary me-3" href="">
+                    Sign up for free
+                </a>
+
+                {% endif %}
+                </div>
+              
+            </div>
+            <!-- Collapsible wrapper -->
+        </div>
+        <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
+    {% endblock navbar %}
+    {% block content %}
+    {% endblock content %}
+
+    <!-- Bootstrap JS and Popper.js -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+{% comment %} <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script> {% endcomment %}
+
+<!-- Custom JavaScript -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Manually handle the click event for the toggle button
+        var toggleButton = document.querySelector('.navbar-toggler');
+        var collapseElement = document.querySelector('#navbarButtonsExample');
+
+        toggleButton.addEventListener('click', function () {
+            // Toggle the 'show' class on the collapse element
+            if (collapseElement.classList.contains('show')) {
+                collapseElement.classList.remove('show');
+            } else {
+                collapseElement.classList.add('show');
+            }
+        });
+    });
+</script>
+
+<!-- MDB JS -->
+{% comment %} <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mdb-ui-kit@5.2.2/dist/js/mdb.min.js" integrity="sha384-8V+XVsoAIXtMS6yivd9ZeUKwCqUd9np+ol8rNHtM7LFvgyNJs4ZufJ6U07ZtkYGN" crossorigin="anonymous"></script> {% endcomment %}
+
+</body>
+</html>

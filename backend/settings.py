@@ -89,7 +89,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
-SESSION_ENGINE = 'django.contrib.sessions.backends.cache'  # or 'django.contrib.sessions.backends.cached_db' for database-backed sessions
+SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'  # or 'django.contrib.sessions.backends.cached_db' for database-backed sessions
 
 DATABASES = {
     'default': {

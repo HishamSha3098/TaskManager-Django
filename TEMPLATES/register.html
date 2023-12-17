@@ -1,9 +1,79 @@
+{% extends 'base.html' %}
+
 {% load static %}
 {% load crispy_forms_tags %}
-{% include "base.html" %}
 
 
-{% block navbar %}{% endblock navbar %}
+
+{% block navbar %}
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
+    <!-- Container wrapper -->
+    <div class="container">
+        <!-- Navbar brand -->
+        <a class="navbar-brand me-2" href="">
+            <img
+            src="https://cdn-icons-png.flaticon.com/512/906/906334.png"
+            height="40"
+            alt="MDB Logo"
+            loading="lazy"
+            style="margin-top: -1px;"
+            />
+        </a>
+
+        <!-- Toggle button -->
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarButtonsExample"
+            aria-controls="navbarButtonsExample"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible wrapper -->
+        <div class="collapse navbar-collapse" id="navbarButtonsExample">
+            <!-- Left links -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="#"></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"></a>
+            </li>
+            </ul>
+            <!-- Left links -->
+
+            
+
+
+            
+
+            <div class="d-flex align-items-center">
+
+            
+            
+            
+
+                
+            <a data-mdb-ripple-init type="button" class="btn btn-success px-3 me-2" href="{% url "login" %}">
+                Login
+            </a>
+          
+
+          
+            </div>
+          
+        </div>
+        <!-- Collapsible wrapper -->
+    </div>
+    <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->
+{% endblock navbar %}
 
 {% block content %}
 <br/>

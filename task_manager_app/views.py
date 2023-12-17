@@ -7,6 +7,10 @@ from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate,login,logout
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
+
+from django.contrib import messages
+import random
+from django.core.mail import send_mail
 # Create your views here.
 
 
@@ -40,9 +44,7 @@ def dashboard(request):
 
 
 
-from django.contrib import messages
-import random
-from django.core.mail import send_mail
+
 
 @csrf_exempt
 def register(request):

@@ -6,27 +6,38 @@ from django.contrib.auth.models import User
 from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate,login,logout
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
 def home(request):
+   
+    return render(request, "index.html")
+
+
+@login_required(login_url='login')
+def dashboard(request):
     user = request.user
     tasks = []
-    user_status = 1 if user.is_authenticated else 0
-    if user.is_authenticated:
-        tasks = Task.objects.filter(user=user)
-        
+    
+    
+    tasks = Task.objects.filter(user=user)
+
+    if tasks is not None:
+    
         task_events = [{'title': task.title, 'completed': 1 if task.completed else 0, 'start': task.scheduled_date.strftime('%Y-%m-%d')} for task in tasks]
 
     else:
         task_events = []
 
     context = {
-        'user': user_status,
+        
         'tasks': tasks,
         'task_events': task_events,
     }
-    return render(request, "index.html", context=context)
+
+    return render(request, "dashboard.html", context=context)
+
 
 
 from django.contrib import messages
@@ -94,7 +105,7 @@ def login(request):
             if user  is not None:
                 auth.login(request, user)
 
-                return redirect(home)
+                return redirect(dashboard)
             
     context = {'form':form}
     return render(request, "login.html",context=context)
@@ -103,7 +114,7 @@ def logout_view(request):
     logout(request)
     return redirect('home') 
 
-
+@login_required(login_url='login')
 def createTask(request):
 
         form = TaskForm()
@@ -119,13 +130,13 @@ def createTask(request):
                 
                 task.save()
 
-                return redirect(home)
+                return redirect(dashboard)
         
         context = {'form':form}
 
         return render(request, "create-task.html",context=context)
     
-
+@login_required(login_url='login')
 def updateTask(request,pk):
     task = Task.objects.get(id=pk)
 
@@ -137,20 +148,20 @@ def updateTask(request,pk):
 
         if form.is_valid():
             form.save()
-            return redirect(home)
+            return redirect(dashboard)
     
     context = {'form':form}
 
     return render(request, 'update-task.html', context=context)
 
 
-
+@login_required(login_url='login')
 def deleteTask(request,pk):
     task = Task.objects.get(id=pk)
 
     task.delete()
 
-    return redirect(home)
+    return redirect(dashboard)
 
 
 from django.http import JsonResponse

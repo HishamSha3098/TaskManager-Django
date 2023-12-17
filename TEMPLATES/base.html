@@ -90,20 +90,15 @@
 
                 <div class="d-flex align-items-center">
 
-                {% if user == 1 %}
+                
                 
                 <a data-mdb-ripple-init type="button" class="btn btn-danger px-3 me-2" href="{% url 'logout' %}">logout
                 </a>
 
-                    {% else %}
-                <a data-mdb-ripple-init type="button" class="btn btn-success px-3 me-2" href="{% url "login" %}">
-                    Login
-                </a>
-                <a data-mdb-ripple-init type="button" class="btn btn-primary me-3" href="">
-                    Sign up for free
-                </a>
+                    
+                
 
-                {% endif %}
+              
                 </div>
               
             </div>

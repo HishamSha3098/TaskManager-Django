@@ -64,10 +64,10 @@ MIDDLEWARE = [
 
 
 CORS_ALLOWED_ORIGINS = [
-    "https://taskmanager.marrazzo.store/",
-    "http://127.0.0.1:8000/",
+    'http://127.0.0.1:8000',
+    'https://taskmanager.marrazzo.store',
+    # Add other allowed origins as needed
 ]
-
 
 ROOT_URLCONF = 'backend.urls'
 

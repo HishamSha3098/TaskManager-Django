@@ -44,6 +44,7 @@ from django.contrib import messages
 import random
 from django.core.mail import send_mail
 
+@csrf_exempt
 def register(request):
     form = CreateUserForm()
 
@@ -71,7 +72,7 @@ def register(request):
     return render(request, "register.html", context=context)
 
 
-
+@csrf_exempt
 def verify_otp(request, username, otp):
     if request.method == 'POST':
         entered_otp = request.POST['otp']
@@ -88,7 +89,7 @@ def verify_otp(request, username, otp):
 
 
 
-
+@csrf_exempt
 def login(request):
 
     form = LoginForm

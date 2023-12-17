@@ -5,6 +5,7 @@ from .forms import CreateUserForm,LoginForm,TaskForm
 from django.contrib.auth.models import User
 from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate,login,logout
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
 

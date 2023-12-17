@@ -12,7 +12,7 @@ from django.views.decorators.csrf import csrf_exempt
 def home(request):
     user = request.user
     tasks = []
-
+    user_status = 1 if user.is_authenticated else 0
     if user.is_authenticated:
         tasks = Task.objects.filter(user=user)
         
@@ -22,7 +22,7 @@ def home(request):
         task_events = []
 
     context = {
-        'user': user,
+        'user': user_status,
         'tasks': tasks,
         'task_events': task_events,
     }

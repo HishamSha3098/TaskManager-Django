@@ -97,6 +97,7 @@ DATABASES = {
         'ENFORCE_SCHEMA': False,
         'CLIENT': {
             'host': config('MONGODB_HOST'),
+            'port': 27017,
             'username': config('MONGODB_USER'),
             'password': config('MONGODB_PASSWORD')
         }  
